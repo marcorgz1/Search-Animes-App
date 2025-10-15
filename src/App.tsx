@@ -29,7 +29,7 @@ function App() {
       setLoading(false);
     }
     
-  }
+  };
     const genres = ['all', ...Array.from(new Set(animes.map(anime => anime.genre)))];
   
     const filteredAnime = animes.filter(anime => {
@@ -70,7 +70,7 @@ function App() {
                   placeholder="Search anime..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+                  className="w-full pl-11 pr-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-800 focus:border-transparent transition-all"
                 />
               </div>
 
@@ -79,7 +79,7 @@ function App() {
                 <select
                   value={selectedGenre}
                   onChange={(e) => setSelectedGenre(e.target.value)}
-                  className="pl-11 pr-10 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all appearance-none cursor-pointer min-w-[160px]"
+                  className="pl-11 pr-10 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-purple-800 focus:border-transparent transition-all appearance-none cursor-pointer min-w-[160px]"
                 >
                   {genres.map(genre => (
                     <option key={genre} value={genre}>

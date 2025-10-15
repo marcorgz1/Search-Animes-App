@@ -33,14 +33,14 @@ function AnimeCard ({ anime }: AnimeCardProps) {
                     {anime.name}
                 </h3>
 
-                <div className="flex items-center gap-4 mb-3 text-sm">
+                <div className="flex items-center gap-4 mb-3 text-xs">
                     <div className="flex items-center gap-1 text-amber-400">
                         <Star className="w-4 h-4 fill-current" />
                         <span className="font-semibold">{anime.rating.toFixed(1)}</span>
                     </div>
                     <div className="flex items-center gap-1 text-slate-400">
                         <Tv className="w-4 h-4" />
-                        <span>{anime.episodes} eps</span>
+                        <span>{anime.episodes} {anime.episodes === 1 ? 'episode' : 'episodes'}</span>
                     </div>
                     <span className="text-slate-400 text-xs uppercase tracking-wide">
                         {anime.genre}
