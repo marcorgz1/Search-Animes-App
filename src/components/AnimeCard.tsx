@@ -8,7 +8,7 @@ interface AnimeCardProps {
 function AnimeCard ({ anime }: AnimeCardProps) {
     const statusColors = {
         inProgress: 'bg-emerald-500',
-        finished: 'bg-blue-500'
+        finished: 'bg-purple-800'
     };
 
     return (
@@ -43,7 +43,8 @@ function AnimeCard ({ anime }: AnimeCardProps) {
                         <span>{anime.episodes} {anime.episodes === 1 ? 'episode' : 'episodes'}</span>
                     </div>
                     <span className="text-slate-400 text-xs uppercase tracking-wide">
-                        {anime.genre}
+                        {/* Si el género del anime es "null" o "undefined" se imprimirá "No especificado" */}
+                        {anime.genre ?? 'No especificado'}
                     </span>
                 </div>
 

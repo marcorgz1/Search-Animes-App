@@ -5,6 +5,7 @@ import './App.css';
 import AnimeCard from './components/AnimeCard.tsx';
 
 function App() {
+  // Estado que almacena los animes existentes
   const [animes, setAnimes] = useState<Anime[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedGenre, setSelectedGenre] = useState<string>('all');
@@ -30,11 +31,15 @@ function App() {
     }
     
   };
+    // Extraer todos los géneros de anime de los animes existentes
     const genres = ['all', ...Array.from(new Set(animes.map(anime => anime.genre)))];
   
     const filteredAnime = animes.filter(anime => {
+      // Filtrar animes por su género
       const matchesGenre = selectedGenre === 'all' || anime.genre === selectedGenre;
+      // Filtrar animes por el contenido del texto
       const matchesSearch = anime.name.toLowerCase().includes(searchQuery.toLowerCase()) || anime.description.toLowerCase().includes(searchQuery.toLowerCase());
+      // Devolver los animes filtrados por el género y el contenido de su texto
       return matchesGenre && matchesSearch;
   });
 
@@ -58,7 +63,7 @@ function App() {
                 <h1 className="text-4xl font-bold text-white tracking-tight">
                   Anime<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-purple-500">Hub</span>
                 </h1>
-                <p className="text-slate-400 text-sm mt-1">Descubre tu siguiente anime favorito</p>
+                <p className="text-slate-400 text-sm mt-1 ml-2">Descubre tu siguiente anime favorito</p>
               </div>
             </div>
 
@@ -93,21 +98,22 @@ function App() {
         </header>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Mostrar estado cargando si aún no se han obtenido los animes */}
           {loading ? (
             <div className="flex items-center justify-center min-h-[400px]">
-              <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-pink-500"></div>
+              <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
             </div>
           ) : filteredAnime.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-slate-400 text-lg">No anime found matching your criteria.</p>
             </div>
           ) : (
-            <>
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-white">
+            <section>
+              <div className="mb-12">
+                <h2 className="flex justify-center items-center gap-4 text-2xl font-bold text-white">
                   {selectedGenre === 'all' ? 'Todos los animes' : selectedGenre}
-                  <span className="text-slate-400 font-normal text-lg ml-3">
-                    ({filteredAnime.length} {filteredAnime.length === 1 ? 'título' : 'títulos'})
+                  <span className="text-slate-400 font-normal text-sm">
+                    ({filteredAnime.length} {filteredAnime.length === 1 ? 'encontrado' : 'encontrados'})
                   </span>
                 </h2>
               </div>
@@ -117,7 +123,7 @@ function App() {
                   <AnimeCard key={item.id} anime={item} />
                 ))}
               </div>
-            </>
+            </section>
           )}
         </main>
       </div>
