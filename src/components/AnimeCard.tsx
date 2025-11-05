@@ -7,7 +7,7 @@ interface AnimeCardProps {
 
 function AnimeCard ({ anime }: AnimeCardProps) {
     const statusColors = {
-        inProgress: 'bg-emerald-500',
+        inProgress: 'bg-blue',
         finished: 'bg-purple-800'
     };
 
